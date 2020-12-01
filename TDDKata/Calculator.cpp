@@ -12,14 +12,20 @@ int Calculator::Add(char* s)
     int cur_index = 0;  //текущий индекс
     int result=0;       //результат
     int d = 0;          //текущий операнд
+    char delimeter = ',';
     memset(ts, 0, 20);
     //Пустая строка
     if (strnlen(s, 100) == 0)
         return -1;
+    if ((*s == '/') && (*(s + 1) == '/')) {
+        s += 2;
+        delimeter = *s;
+        s += 2;
+    }
     while (*s) {
         if ((*s >= '0') && (*s < '9'))
             ts[cur_index++] = *s;
-        else if ( ( (*s == ',')||(*s=='\n') ) && (cur_index != 0)) {
+        else if ( ( (*s == delimeter)||(*s=='\n') ) && (cur_index != 0)) {
             ts[cur_index++] = 0;
             sscanf(ts, "%d", &d);
             result += d;
@@ -28,8 +34,11 @@ int Calculator::Add(char* s)
         }
         else if (((*s == ',') || (*s == '\n')) && (cur_index == 0)) 
             return -4;
-        else//неверный символ
+        else {  //неверный символ
+            if (cur_index != 0) //неверный разделитель
+                return -5;
             return -3;
+        }
         s++;
     }
     if (cur_index > 0) {
