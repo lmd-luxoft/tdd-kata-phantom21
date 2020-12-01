@@ -73,16 +73,5 @@ TEST(TDDKata, TestWrongSyntax) {
 	ASSERT_EQ(expected, actual);
 }
 
-TEST(TDDKata, Test‹) {
-	//Arrange
-	char* s = "a";
-	int expected = -3;
-	Calculator calc;
-	//Act
-	int actual = calc.Add(s);
-
-	//Accert
-	ASSERT_EQ(expected, actual);
-}
 
 
