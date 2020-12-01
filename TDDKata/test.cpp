@@ -51,8 +51,8 @@ TEST(TDDKata, TestThreeArguments) {
 
 TEST(TDDKata, TestManyArguments) {
 	//Arrange
-	char* s = "1,2,3,4";
-	int expected = -2;
+	char* s = "1,2,3,4,5,6,7";
+	int expected = 28;
 	Calculator calc;
 	//Act
 	int actual = calc.Add(s);
@@ -72,4 +72,17 @@ TEST(TDDKata, TestWrongSyntax) {
 	//Accert
 	ASSERT_EQ(expected, actual);
 }
+
+TEST(TDDKata, Test‹) {
+	//Arrange
+	char* s = "a";
+	int expected = -3;
+	Calculator calc;
+	//Act
+	int actual = calc.Add(s);
+
+	//Accert
+	ASSERT_EQ(expected, actual);
+}
+
 
