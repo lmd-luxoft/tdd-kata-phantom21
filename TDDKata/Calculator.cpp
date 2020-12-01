@@ -19,13 +19,15 @@ int Calculator::Add(char* s)
     while (*s) {
         if ((*s >= '0') && (*s < '9'))
             ts[cur_index++] = *s;
-        else if ((*s == ',') && (cur_index != 0)) {
+        else if ( ( (*s == ',')||(*s=='\n') ) && (cur_index != 0)) {
             ts[cur_index++] = 0;
             sscanf(ts, "%d", &d);
             result += d;
             cur_index = 0;
             memset(ts, 0, 20);
         }
+        else if (((*s == ',') || (*s == '\n')) && (cur_index == 0)) 
+            return -4;
         else//неверный символ
             return -3;
         s++;
