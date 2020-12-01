@@ -11,7 +11,7 @@ TEST(TDDKata, TestEmptyString) {
 
 		//Accert
 		ASSERT_EQ(expected, actual);
-	}
+}
 
 TEST(TDDKata, TestOneArguments) {
 	//Arrange
