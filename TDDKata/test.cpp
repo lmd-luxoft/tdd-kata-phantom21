@@ -96,4 +96,28 @@ TEST(TDDKata, TestOtherDelimeter) {
 	ASSERT_EQ(expected, actual);
 }
 
+TEST(TDDKata, TestSettingDelimeter) {
+	//Arrange
+	char* s = "//;\n1;2";
+	int expected = 3;
+	Calculator calc;
+	//Act
+	int actual = calc.Add(s);
+
+	//Accert
+	ASSERT_EQ(expected, actual);
+}
+
+TEST(TDDKata, TestWrongAfterSettingDelimeter) {
+	//Arrange
+	char* s = "//;\n1,2";
+	int expected = -5;
+	Calculator calc;
+	//Act
+	int actual = calc.Add(s);
+
+	//Accert
+	ASSERT_EQ(expected, actual);
+}
+
 
