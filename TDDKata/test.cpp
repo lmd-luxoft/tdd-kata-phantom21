@@ -73,5 +73,27 @@ TEST(TDDKata, TestWrongSyntax) {
 	ASSERT_EQ(expected, actual);
 }
 
+TEST(TDDKata, TestWrongDelimeter) {
+	//Arrange
+	char* s = "1,\n";
+	int expected = -4;
+	Calculator calc;
+	//Act
+	int actual = calc.Add(s);
+
+	//Accert
+	ASSERT_EQ(expected, actual);
+}
+TEST(TDDKata, TestOtherDelimeter) {
+	//Arrange
+	char* s = "1\n2,3";
+	int expected = 6;
+	Calculator calc;
+	//Act
+	int actual = calc.Add(s);
+
+	//Accert
+	ASSERT_EQ(expected, actual);
+}
 
 
