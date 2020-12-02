@@ -1,122 +1,114 @@
 #include "pch.h"
 #include "Calculator.h"
+#include "TextFixture.h"
 
-TEST(TDDKata, TestEmptyString) {
+
+TEST_F(TextFixture, TestEmptyString) {
 		//Arrange
 		char* s = "";
 		int expected = -1;
-		Calculator calc;
 		//Act
-		int actual = calc.Add(s);
+		int actual = calc->Add(s);
 
-		//Accert
+		//Assert
 		ASSERT_EQ(expected, actual);
 }
 
-TEST(TDDKata, TestOneArguments) {
+TEST_F(TextFixture, TestOneArguments) {
 	//Arrange
 	char* s = "1";
 	int expected = 1;
-	Calculator calc;
 	//Act
-	int actual = calc.Add(s);
+	int actual = calc->Add(s);
 
-	//Accert
+	//Assert
 	ASSERT_EQ(expected, actual);
 }
-TEST(TDDKata, TestTwoArguments) {
+TEST_F(TextFixture, TestTwoArguments) {
 	//Arrange
 	char* s = "1,2";
 	int expected = 3;
-	Calculator calc;
 	//Act
-	int actual = calc.Add(s);
+	int actual = calc->Add(s);
 
-	//Accert
+	//Assert
 	ASSERT_EQ(expected, actual);
 }
 
-TEST(TDDKata, TestThreeArguments) {
+TEST_F(TextFixture, TestThreeArguments) {
 	//Arrange
 	char* s = "1,2,3";
 	int expected = 6;
-	Calculator calc;
 	//Act
-	int actual = calc.Add(s);
+	int actual = calc->Add(s);
 
-	//Accert
+	//Assert
 	ASSERT_EQ(expected, actual);
 }
 
 
-TEST(TDDKata, TestManyArguments) {
+TEST_F(TextFixture, TestManyArguments) {
 	//Arrange
 	char* s = "1,2,3,4,5,6,7";
 	int expected = 28;
-	Calculator calc;
 	//Act
-	int actual = calc.Add(s);
+	int actual = calc->Add(s);
 
-	//Accert
+	//Assert
 	ASSERT_EQ(expected, actual);
 }
 
-TEST(TDDKata, TestWrongSyntax) {
+TEST_F(TextFixture, TestWrongSyntax) {
 	//Arrange
 	char* s = "a";
 	int expected = -3;
-	Calculator calc;
 	//Act
-	int actual = calc.Add(s);
+	int actual = calc->Add(s);
 
-	//Accert
+	//Assert
 	ASSERT_EQ(expected, actual);
 }
 
-TEST(TDDKata, TestWrongDelimeter) {
+TEST_F(TextFixture, TestWrongDelimeter) {
 	//Arrange
 	char* s = "1,\n";
 	int expected = -4;
-	Calculator calc;
 	//Act
-	int actual = calc.Add(s);
+	int actual = calc->Add(s);
 
-	//Accert
+	//Assert
 	ASSERT_EQ(expected, actual);
 }
-TEST(TDDKata, TestOtherDelimeter) {
+TEST_F(TextFixture, TestOtherDelimeter) {
 	//Arrange
 	char* s = "1\n2,3";
 	int expected = 6;
-	Calculator calc;
 	//Act
-	int actual = calc.Add(s);
+	int actual = calc->Add(s);
 
-	//Accert
+	//Assert
 	ASSERT_EQ(expected, actual);
 }
 
-TEST(TDDKata, TestSettingDelimeter) {
+TEST_F(TextFixture, TestSettingDelimeter) {
 	//Arrange
 	char* s = "//;\n1;2";
 	int expected = 3;
-	Calculator calc;
 	//Act
-	int actual = calc.Add(s);
+	int actual = calc->Add(s);
 
-	//Accert
+	//Assert
 	ASSERT_EQ(expected, actual);
 }
 
-TEST(TDDKata, TestWrongAfterSettingDelimeter) {
+TEST_F(TextFixture, TestWrongAfterSettingDelimeter) {
 	//Arrange
 	char* s = "//;\n1,2";
 	int expected = -5;
-	Calculator calc;
 	//Act
-	int actual = calc.Add(s);
+	int actual = calc->Add(s);
 
-	//Accert
+	//Assert
 	ASSERT_EQ(expected, actual);
 }
 
