@@ -1,9 +1,21 @@
 #include "pch.h"
 #include "Calculator.h"
-#include "TextFixture.h"
+#include "TestFixture.h"
+#include "TestFixtureWithParam.h"
+
+TEST_P(TestFixtureWithParam, AllTests)
+{
+	//Arrange
+	char *s = GetParam().s;
+	int expected = GetParam().expected;
+	//Act
+	int actual = calc->Add(s);
+	//Assert
+	ASSERT_EQ(expected, actual);
 
 
-TEST_F(TextFixture, TestEmptyString) {
+}
+TEST_F(TestFixture, TestEmptyString) {
 		//Arrange
 		char* s = "";
 		int expected = -1;
@@ -14,7 +26,7 @@ TEST_F(TextFixture, TestEmptyString) {
 		ASSERT_EQ(expected, actual);
 }
 
-TEST_F(TextFixture, TestOneArguments) {
+TEST_F(TestFixture, TestOneArguments) {
 	//Arrange
 	char* s = "1";
 	int expected = 1;
@@ -24,7 +36,7 @@ TEST_F(TextFixture, TestOneArguments) {
 	//Assert
 	ASSERT_EQ(expected, actual);
 }
-TEST_F(TextFixture, TestTwoArguments) {
+TEST_F(TestFixture, TestTwoArguments) {
 	//Arrange
 	char* s = "1,2";
 	int expected = 3;
@@ -35,7 +47,7 @@ TEST_F(TextFixture, TestTwoArguments) {
 	ASSERT_EQ(expected, actual);
 }
 
-TEST_F(TextFixture, TestThreeArguments) {
+TEST_F(TestFixture, TestThreeArguments) {
 	//Arrange
 	char* s = "1,2,3";
 	int expected = 6;
@@ -47,7 +59,7 @@ TEST_F(TextFixture, TestThreeArguments) {
 }
 
 
-TEST_F(TextFixture, TestManyArguments) {
+TEST_F(TestFixture, TestManyArguments) {
 	//Arrange
 	char* s = "1,2,3,4,5,6,7";
 	int expected = 28;
@@ -58,7 +70,7 @@ TEST_F(TextFixture, TestManyArguments) {
 	ASSERT_EQ(expected, actual);
 }
 
-TEST_F(TextFixture, TestWrongSyntax) {
+TEST_F(TestFixture, TestWrongSyntax) {
 	//Arrange
 	char* s = "a";
 	int expected = -3;
@@ -69,7 +81,7 @@ TEST_F(TextFixture, TestWrongSyntax) {
 	ASSERT_EQ(expected, actual);
 }
 
-TEST_F(TextFixture, TestWrongDelimeter) {
+TEST_F(TestFixture, TestWrongDelimeter) {
 	//Arrange
 	char* s = "1,\n";
 	int expected = -4;
@@ -79,7 +91,7 @@ TEST_F(TextFixture, TestWrongDelimeter) {
 	//Assert
 	ASSERT_EQ(expected, actual);
 }
-TEST_F(TextFixture, TestOtherDelimeter) {
+TEST_F(TestFixture, TestOtherDelimeter) {
 	//Arrange
 	char* s = "1\n2,3";
 	int expected = 6;
@@ -90,7 +102,7 @@ TEST_F(TextFixture, TestOtherDelimeter) {
 	ASSERT_EQ(expected, actual);
 }
 
-TEST_F(TextFixture, TestSettingDelimeter) {
+TEST_F(TestFixture, TestSettingDelimeter) {
 	//Arrange
 	char* s = "//;\n1;2";
 	int expected = 3;
@@ -101,7 +113,7 @@ TEST_F(TextFixture, TestSettingDelimeter) {
 	ASSERT_EQ(expected, actual);
 }
 
-TEST_F(TextFixture, TestWrongAfterSettingDelimeter) {
+TEST_F(TestFixture, TestWrongAfterSettingDelimeter) {
 	//Arrange
 	char* s = "//;\n1,2";
 	int expected = -5;
